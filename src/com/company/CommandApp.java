@@ -1,5 +1,6 @@
 package com.company;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -11,7 +12,7 @@ public class CommandApp {
         System.out.println("'createpurchasers':create a new purcharsers");
         System.out.println("'editpurchasers':find a buyer and modify it");
         System.out.println("'removepurchasers': searches for a buyer and deletes it");
-        System.out.println("'listusers':display the purchasers list");
+        System.out.println("'listpurchasers':display the purchasers list");
         System.out.println("'createitems': create a new items");
         System.out.println("'edititems':find an items and modify it");
         System.out.println("'removeitems':find an items and delete it");
@@ -33,13 +34,14 @@ public class CommandApp {
         Scanner sc = new Scanner(System.in);
         String choice = sc.next().toLowerCase();
         if(choice.equals("exit")||choice.equals("help")||choice.equals("createpurchasers")||choice.equals("createitems")||choice.equals("save")||choice.equals("removepurchasers")
-        ||choice.equals("savepurchasers")||choice.equals("saveitems")||choice.equals("saveauction")){
+        ||choice.equals("savepurchasers")||choice.equals("saveitems")||choice.equals("saveauction")||choice.equals("restore")
+        ||choice.equals("restorepurchasers")||choice.equals("restoreitems")||choice.equals("restoreauction")||choice.equals("listpurchasers")){
             return choice;
         }else {
             return "Insert a valid command";
         }
     }
-    public static void commandsAction(String controllerChoice, List<Purchasers> lP,List<Items> lI,List<Auction> lA) {
+    public static void commandsAction(String controllerChoice, List<Purchasers> lP,List<Items> lI,List<Auction> lA) throws IOException {
         if(controllerChoice.equals("exit")){
             quitApp();
         }else if (controllerChoice.equals("help")){
@@ -47,12 +49,16 @@ public class CommandApp {
         }else if (controllerChoice.equals("createpurchasers")){
             ListPurchasers.CreatePurchasers(lP);
         }else if(controllerChoice.equals("createitems")){
-            ListItems.CreateItems();
+            ListItems.CreateItems(lI);
         } else if(controllerChoice.equals("removepurchasers")){
             ListPurchasers.DeletePurchasers(lP);
         } else if(controllerChoice.equals("save")){
-            SaveAndRestore.Save(lP,lI,lA);
+            Save.Save(lP,lI,lA);
             System.out.println("file save");
+        }else if (controllerChoice.equals("restore")){
+            Restore.Restore(lP,lI,lA);
+        }else if (controllerChoice.equals("listpurchasers")){
+            ListPurchasers.DisplayPurchasers(lP);
         }
         else {
             System.out.println("unknown command, please insert key valid \n");

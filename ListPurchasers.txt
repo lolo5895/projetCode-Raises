@@ -1,2 +1,2 @@
-First name: loloLast name: bdnCountry born:franceAge : 24Spéciality : tout
-First name: lolo Last name: bdn Country born:france Age : 24 Speciality : tout
+lolo;bdn;france;24;rien
+tony;stark;miami;55;techno

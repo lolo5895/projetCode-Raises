@@ -1,10 +1,11 @@
 package com.company;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
-	public static void main(String[] args){
+	public static void main(String[] args) throws IOException {
 		List<Purchasers> purchasersList = new ArrayList<Purchasers>();
 		List<Items> itemsList = new ArrayList<Items>();
 		List<Auction> auctionList = new ArrayList<Auction>();

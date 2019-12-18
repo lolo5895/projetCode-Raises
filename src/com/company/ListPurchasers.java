@@ -18,9 +18,23 @@ public class ListPurchasers {
             System.out.println("Enter a countryBorn : ");
             Scanner sc2 = new Scanner(System.in);
             String choiceCountryBorn = sc2.next().toLowerCase();
-            System.out.println("Enter age : ");
+           /* System.out.println("Enter age : ");
             Scanner sc3 = new Scanner(System.in);
-            int choiceAge = Integer.parseInt(sc3.next());
+            int choiceAge = Integer.parseInt(sc3.next());*/
+           int choiceAge = 0;
+           do{
+               try{
+                   System.out.println("Enter age : ");
+                   Scanner sc3 = new Scanner(System.in);
+                   choiceAge = Integer.parseInt(sc3.next());
+                   if(choiceAge<18||choiceAge>99){
+                       System.out.printf("veuillez entrez une age compris entre 18 & 99ans"+"\n");
+                   }
+               }catch(NumberFormatException e){
+                   System.out.println("veuillez entrez une age compris entre 18 & 99ans");
+                   e.getMessage();
+               }
+           }while (choiceAge < 18 || choiceAge > 99);
             System.out.println("Enter a speciality : ");
             Scanner sc4 = new Scanner(System.in);
             String choiceSpeciality = sc4.next().toLowerCase();
@@ -29,6 +43,15 @@ public class ListPurchasers {
             lp.add(p1);
             System.out.println(p1);
 
+        }
+    }
+    public static void DisplayPurchasers(List<Purchasers>lp){
+        if(lp.isEmpty()){
+            System.out.println("List empty");
+        }else
+        for (int i = 0;i<lp.size();i++){
+            Purchasers p = lp.get(i);
+            System.out.println(p);
         }
     }
 
