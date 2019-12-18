@@ -1,9 +1,10 @@
 package com.company;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class ListItems {
-    public static Items CreateItems() {
+    public static void CreateItems(List<Items> li) {
         System.out.println("Please enter 'items'");
         Scanner sc0 = new Scanner(System.in);
         String choiceClass = sc0.next().toLowerCase();
@@ -22,9 +23,8 @@ public class ListItems {
             int choiceScarcity = Integer.parseInt(sc3.next());
 
             Items i1 = new Items(choiceItemName, choiceItemReference, choiceItemCategory, choiceScarcity);
+            li.add(i1);
             System.out.println(i1);
-            return i1;
-
-        }return CreateItems();
+        }
     }
 }

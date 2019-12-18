@@ -1,9 +1,10 @@
 package com.company;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class ListPurchasers {
-    public static Purchasers CreatePurchasers() {
+    public static void CreatePurchasers(List<Purchasers> lp) {
         System.out.println("Please enter 'purchasers'");
         Scanner sc0 = new Scanner(System.in);
         String choiceClass = sc0.next().toLowerCase();
@@ -25,9 +26,43 @@ public class ListPurchasers {
             String choiceSpeciality = sc4.next().toLowerCase();
 
             Purchasers p1 = new Purchasers(choiceFirstName, choiceLastName, choiceCountryBorn, choiceAge, choiceSpeciality);
+            lp.add(p1);
             System.out.println(p1);
-            return p1;
 
-        }return CreatePurchasers();
+        }
+    }
+
+   /* public static Purchasers ModifyPurchasers(List<Purchasers> lp){
+return null;
+    }*/
+
+    public static Purchasers FoundPurchasers(String firstName, String lastName, List<Purchasers>lp){
+        try {
+            for (Purchasers purchasers : lp) {
+                if (purchasers.getFirstName().equals(firstName) && purchasers.getLastName().equals(lastName)) {
+                    return purchasers;
+                }
+            }
+            return null ;
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+    public static void DeletePurchasers(List<Purchasers> lp){
+        System.out.println("Enter the fisrt name purchasers to delete:");
+        Scanner f = new Scanner(System.in);
+        String firstName = f.next();
+        System.out.println("Enter the last name purchasers to delete:");
+        Scanner l = new Scanner(System.in);
+        String lastName = l.next();
+
+        if (ListPurchasers.FoundPurchasers(firstName, lastName, lp)!=null) {
+            lp.remove(ListPurchasers.FoundPurchasers(firstName, lastName, lp));
+            System.out.println("The purchasers has been deleted. ");
+
+        } else {
+            System.out.println("Error: the purchasers is not found in our list users, please enter a purchasers valid.");
+        }
     }
 }
