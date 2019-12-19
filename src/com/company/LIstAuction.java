@@ -4,6 +4,10 @@ import java.util.List;
 import java.util.Scanner;
 
 public class LIstAuction {
+    /**
+     * create a new auction
+     * @param la list of auction
+     */
     public static void CreateAuction(List<Auction>la){
         System.out.println("Please enter 'auction'");
         Scanner sc0 = new Scanner(System.in);
@@ -30,6 +34,10 @@ public class LIstAuction {
         }
     }
 
+    /**
+     * display the list of auction
+     * @param la list of auction
+     */
     public static void DisplayAuction(List<Auction>la){
         if(la.isEmpty()){
             System.out.println("List empty");

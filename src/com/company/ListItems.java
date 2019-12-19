@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class ListItems {
     /**
-     * create a new items
+     * create a new items and ckecks that there is not the same items twice
      * @param li list of items
      */
     public static void CreateItems(List<Items> li) {
@@ -16,9 +16,18 @@ public class ListItems {
             System.out.println("Enter a Item Name : ");
             Scanner sc = new Scanner(System.in);
             String choiceItemName = sc.next().toLowerCase();
-            System.out.println("Enter a Item Reference : ");
-            Scanner sc1 = new Scanner(System.in);
-            String choiceItemReference = sc1.next().toUpperCase();
+            String choiceItemReference;
+            boolean ReferenceItemExist = false;
+            do {
+                System.out.println("Enter a Item Reference : ");
+                Scanner sc1 = new Scanner(System.in);
+                choiceItemReference = sc1.next().toUpperCase();
+                if (ListItems.FoundItems(choiceItemReference,li)!=null) {
+                    System.out.println("The items exists, please try again ");
+                } else {
+                    ReferenceItemExist = true;
+                }
+            }while (ReferenceItemExist==false);
             System.out.println("Enter a Item Category : ");
             Scanner sc2 = new Scanner(System.in);
             String choiceItemCategory = sc2.next().toLowerCase();

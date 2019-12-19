@@ -1,0 +1,1 @@
+shield;CAP01;weapon;99%

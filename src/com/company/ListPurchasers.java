@@ -5,7 +5,8 @@ import java.util.Scanner;
 
 public class ListPurchasers {
     /**
-     *create a new purchasers but only authorizes the creation of a buyer whose age is between 18 and 99
+     *create a new purchasers but only authorizes the creation of a buyer whose age is between 18 and 99 and checks that there is not
+     * the same buyer twice
      * @param lp list of purchasers
      */
     public static void CreatePurchasers(List<Purchasers> lp) {
@@ -15,7 +16,7 @@ public class ListPurchasers {
         if (choiceClass.equals("purchasers")) {
             String choiceFirstName;
             String choiceLastName;
-            Boolean PurchaserExist = false;
+            boolean PurchaserExist = false;
             do {
                 System.out.println("Enter a firstName : ");
                 Scanner sc = new Scanner(System.in);
@@ -27,7 +28,6 @@ public class ListPurchasers {
                     System.out.println("The purchasers exists, please try again ");
                 } else {
                     PurchaserExist = true;
-                    System.out.println("the purchasers doesnt exists");
                 }
             }while (PurchaserExist == false);
             System.out.println("Enter a countryBorn : ");
@@ -40,10 +40,10 @@ public class ListPurchasers {
                    Scanner sc3 = new Scanner(System.in);
                    choiceAge = Integer.parseInt(sc3.next());
                    if(choiceAge<18||choiceAge>99){
-                       System.out.println("veuillez entrez une age compris entre 18 & 99ans"+"\n");
+                       System.out.println("Please enter an age between 18 and 99"+"\n");
                    }
                }catch(NumberFormatException e){
-                   System.out.println("veuillez entrez une age compris entre 18 & 99ans");
+                   System.out.println("Please enter an age between 18 and 99");
                    e.getMessage();
                }
            }while (choiceAge < 18 || choiceAge > 99);
@@ -71,8 +71,29 @@ public class ListPurchasers {
         }
     }
 
-   /* public static Purchasers ModifyPurchasers(List<Purchasers> lp){
-return purchasers;
+   /* public static void ModifyPurchasers(List<Purchasers> lp){
+        System.out.println("Enter the fisrt name purchasers to change : ");
+        Scanner f = new Scanner(System.in);
+        String firstName = f.next();
+        System.out.println("Enter the last name purchasers to change : ");
+        Scanner l = new Scanner(System.in);
+        String lastName = l.next();
+        if (ListPurchasers.FoundPurchasers(firstName, lastName, lp)!=null) {
+            Purchasers modifp = FoundPurchasers(firstName, lastName, lp);
+            System.out.println(modifp);
+            System.out.println("Enter a countryBorn : ");
+            Scanner sc2 = new Scanner(System.in);
+            String NewCountryBorn = sc2.next().toLowerCase();
+            if (NewCountryBorn.equals("")){
+                modifp.getCountryBorn();
+            }else{
+                modifp.setCountryBorn(NewCountryBorn);
+
+            }
+        } else {
+            System.out.println("Error: the purchasers is not found in our list users, please enter a purchasers valid.");
+        }
+
     }*/
 
     /**

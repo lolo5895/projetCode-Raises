@@ -36,7 +36,7 @@ public class Purchasers {
     public String setLastName(){
         return this.lastName;
     }
-    public String setCountryBorn(){
+    public String setCountryBorn(String newCountryBorn){
         return this.countryBorn;
     }
     public int setAge(){

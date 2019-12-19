@@ -46,7 +46,7 @@ public class CommandApp {
         if(choice.equals("exit")||choice.equals("help")||choice.equals("createpurchasers")||choice.equals("createitems")||choice.equals("save")||choice.equals("removepurchasers")
         ||choice.equals("savepurchasers")||choice.equals("saveitems")||choice.equals("saveauction")||choice.equals("restore")
         ||choice.equals("restorepurchasers")||choice.equals("restoreitems")||choice.equals("restoreauction")||choice.equals("listpurchasers")||
-        choice.equals("listitems")||choice.equals("removeitems")||choice.equals("createauction")||choice.equals("listauction")){
+        choice.equals("listitems")||choice.equals("removeitems")||choice.equals("createauction")||choice.equals("listauction")||choice.equals("editpurchasers")){
             return choice;
         }else {
             return "Insert a valid command";
