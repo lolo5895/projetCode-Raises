@@ -7,7 +7,13 @@ import java.io.IOException;
 import java.util.*;
 
 public class Restore {
-
+    /**
+     *
+     * @param lp list of purchasers
+     * @param li list of items
+     * @param la list of auction
+     * @throws IOException
+     */
     public static void Restore(List<Purchasers>lp,List<Items>li,List<Auction>la) throws IOException {
         System.out.println("wich list you want to restore?"+"\n"+"Please enter 'restore'+the name of the list choice"+"\n"+
                 "Purchasers?"+"\n"+"Items?"+"\n"+"Auction?");
@@ -16,6 +22,7 @@ public class Restore {
             String choiceClass = sc0.next().toLowerCase();
             if (choiceClass.equals("restorepurchasers")) {
                 Restore.RestorePurchasers(lp);
+                System.out.println("listPurchasers restore as succesfull");
             } else if (choiceClass.equals("restoreitems")) {
                 Restore.RestoreItems(li);
             } else if (choiceClass.equals("restoreauction")) {
@@ -25,14 +32,22 @@ public class Restore {
             e.printStackTrace();
         }
     }
-    public static void RestoreItems(List<Items> li) throws IOException {
+    public static List<Items> RestoreItems(List<Items> li) throws IOException {
         try {
-            FileReader f = new FileReader("ListItems.txt");
-            for (int i = 0; i < li.size(); i++) {
-                f.read();
+            BufferedReader reader = new BufferedReader(new FileReader("ListItems.txt"));
+            String line;
+            while ((line = reader.readLine()) != null) {
+                //System.out.println(line);
+                String[]lt = line.split(";");
+                Items i = new Items(lt[0],lt[1],lt[2],Integer.parseInt(lt[3]));
+                li.add(i);
             }
+            reader.close();
+            return li;
         } catch (IOException e) {
+            System.err.format("Exception occurred trying to read '%s'.", "ListItems.txt");
             e.printStackTrace();
+            return null;
         }
     }
     public static List<Purchasers>  RestorePurchasers(List<Purchasers> lp) throws IOException {

@@ -5,6 +5,9 @@ import java.util.List;
 import java.util.Scanner;
 
 public class CommandApp {
+    /**
+     * displays the different functions of the application
+     */
     public static void CommandMenu() {
         System.out.println("**MENU**");
         System.out.println("'help':display the list of the command app");
@@ -24,11 +27,18 @@ public class CommandApp {
         System.out.println("'restore':restore the list of a file after restarting the application ");
     }
 
+    /**
+     *quits the application
+     */
     public static void quitApp() {
         System.out.println("Goodbye");
     }
 
-
+    /**
+     *retrieve commands written on the keyboard
+     * @return the choice user
+     * @return a character string to prompt the user to write a valid command
+     */
     public static String keyboardScan() {
         System.out.println("Enter a key : ");
         Scanner sc = new Scanner(System.in);
@@ -36,12 +46,21 @@ public class CommandApp {
         if(choice.equals("exit")||choice.equals("help")||choice.equals("createpurchasers")||choice.equals("createitems")||choice.equals("save")||choice.equals("removepurchasers")
         ||choice.equals("savepurchasers")||choice.equals("saveitems")||choice.equals("saveauction")||choice.equals("restore")
         ||choice.equals("restorepurchasers")||choice.equals("restoreitems")||choice.equals("restoreauction")||choice.equals("listpurchasers")||
-        choice.equals("listitems")||choice.equals("removeitems")){
+        choice.equals("listitems")||choice.equals("removeitems")||choice.equals("createauction")||choice.equals("listauction")){
             return choice;
         }else {
             return "Insert a valid command";
         }
     }
+
+    /**
+     *allows the user to enter a command
+     * @param controllerChoice
+     * @param lP list of purchasers
+     * @param lI list of items
+     * @param lA list of auction
+     * @throws IOException
+     */
     public static void commandsAction(String controllerChoice, List<Purchasers> lP,List<Items> lI,List<Auction> lA) throws IOException {
         if(controllerChoice.equals("exit")){
             quitApp();
@@ -64,6 +83,10 @@ public class CommandApp {
             ListItems.DisplayItems(lI);
         }else if (controllerChoice.equals("removeitems")){
             ListItems.DeleteItems(lI);
+        }else if (controllerChoice.equals("createauction")){
+            LIstAuction.CreateAuction(lA);
+        } else if (controllerChoice.equals("listauction")){
+            LIstAuction.DisplayAuction(lA);
         }
         else {
             System.out.println("unknown command, please insert key valid \n");

@@ -4,23 +4,35 @@ import java.util.List;
 import java.util.Scanner;
 
 public class ListPurchasers {
+    /**
+     *create a new purchasers but only authorizes the creation of a buyer whose age is between 18 and 99
+     * @param lp list of purchasers
+     */
     public static void CreatePurchasers(List<Purchasers> lp) {
         System.out.println("Please enter 'purchasers'");
         Scanner sc0 = new Scanner(System.in);
         String choiceClass = sc0.next().toLowerCase();
         if (choiceClass.equals("purchasers")) {
-            System.out.println("Enter a firstName : ");
-            Scanner sc = new Scanner(System.in);
-            String choiceFirstName = sc.next().toLowerCase();
-            System.out.println("Enter a lastName : ");
-            Scanner sc1 = new Scanner(System.in);
-            String choiceLastName = sc1.next().toLowerCase();
+            String choiceFirstName;
+            String choiceLastName;
+            Boolean PurchaserExist = false;
+            do {
+                System.out.println("Enter a firstName : ");
+                Scanner sc = new Scanner(System.in);
+                choiceFirstName = sc.next().toLowerCase();
+                System.out.println("Enter a lastName : ");
+                Scanner sc1 = new Scanner(System.in);
+                choiceLastName = sc1.next().toLowerCase();
+                if (ListPurchasers.FoundPurchasers(choiceFirstName, choiceLastName, lp)!=null) {
+                    System.out.println("The purchasers exists, please try again ");
+                } else {
+                    PurchaserExist = true;
+                    System.out.println("the purchasers doesnt exists");
+                }
+            }while (PurchaserExist == false);
             System.out.println("Enter a countryBorn : ");
             Scanner sc2 = new Scanner(System.in);
             String choiceCountryBorn = sc2.next().toLowerCase();
-           /* System.out.println("Enter age : ");
-            Scanner sc3 = new Scanner(System.in);
-            int choiceAge = Integer.parseInt(sc3.next());*/
            int choiceAge = 0;
            do{
                try{
@@ -28,7 +40,7 @@ public class ListPurchasers {
                    Scanner sc3 = new Scanner(System.in);
                    choiceAge = Integer.parseInt(sc3.next());
                    if(choiceAge<18||choiceAge>99){
-                       System.out.printf("veuillez entrez une age compris entre 18 & 99ans"+"\n");
+                       System.out.println("veuillez entrez une age compris entre 18 & 99ans"+"\n");
                    }
                }catch(NumberFormatException e){
                    System.out.println("veuillez entrez une age compris entre 18 & 99ans");
@@ -42,9 +54,13 @@ public class ListPurchasers {
             Purchasers p1 = new Purchasers(choiceFirstName, choiceLastName, choiceCountryBorn, choiceAge, choiceSpeciality);
             lp.add(p1);
             System.out.println(p1);
-
         }
     }
+
+    /**
+     * display the list of purchasers
+     * @param lp list of purchasers
+     */
     public static void DisplayPurchasers(List<Purchasers>lp){
         if(lp.isEmpty()){
             System.out.println("List empty");
@@ -56,9 +72,16 @@ public class ListPurchasers {
     }
 
    /* public static Purchasers ModifyPurchasers(List<Purchasers> lp){
-return null;
+return purchasers;
     }*/
 
+    /**
+     * look for an purchasers with first name and last name
+     * @param firstName
+     * @param lastName
+     * @param lp
+     * @return a purchasers
+     */
     public static Purchasers FoundPurchasers(String firstName, String lastName, List<Purchasers>lp){
         try {
             for (Purchasers purchasers : lp) {
@@ -74,8 +97,8 @@ return null;
     }
 
     /**
-     *
-     * @param lp
+     *delete a purchasers
+     * @param lp list of purchasers
      */
     public static void DeletePurchasers(List<Purchasers> lp){
         System.out.println("Enter the fisrt name purchasers to delete:");

@@ -4,6 +4,10 @@ import java.util.List;
 import java.util.Scanner;
 
 public class ListItems {
+    /**
+     * create a new items
+     * @param li list of items
+     */
     public static void CreateItems(List<Items> li) {
         System.out.println("Please enter 'items'");
         Scanner sc0 = new Scanner(System.in);
@@ -27,6 +31,11 @@ public class ListItems {
             System.out.println(i1);
         }
     }
+
+    /**
+     * display the list of items
+     * @param li list of items
+     */
     public static void DisplayItems(List<Items>li){
         if(li.isEmpty()){
             System.out.println("List empty");
@@ -36,6 +45,13 @@ public class ListItems {
                 System.out.println(i);
             }
     }
+
+    /**
+     * look for an items with its reference
+     * @param referenceItems
+     * @param li list of items
+     * @return a items
+     */
     public static Items FoundItems(String referenceItems, List<Items>li){
         try {
             for (Items i:li ) {
@@ -49,6 +65,11 @@ public class ListItems {
         }
         return null;
     }
+
+    /**
+     * delete a items
+     * @param li list of items
+     */
     public static void DeleteItems(List<Items> li){
         System.out.println("Enter the reference items to delete:");
         Scanner f = new Scanner(System.in);
