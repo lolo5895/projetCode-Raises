@@ -35,7 +35,8 @@ public class CommandApp {
         String choice = sc.next().toLowerCase();
         if(choice.equals("exit")||choice.equals("help")||choice.equals("createpurchasers")||choice.equals("createitems")||choice.equals("save")||choice.equals("removepurchasers")
         ||choice.equals("savepurchasers")||choice.equals("saveitems")||choice.equals("saveauction")||choice.equals("restore")
-        ||choice.equals("restorepurchasers")||choice.equals("restoreitems")||choice.equals("restoreauction")||choice.equals("listpurchasers")){
+        ||choice.equals("restorepurchasers")||choice.equals("restoreitems")||choice.equals("restoreauction")||choice.equals("listpurchasers")||
+        choice.equals("listitems")||choice.equals("removeitems")){
             return choice;
         }else {
             return "Insert a valid command";
@@ -59,6 +60,10 @@ public class CommandApp {
             Restore.Restore(lP,lI,lA);
         }else if (controllerChoice.equals("listpurchasers")){
             ListPurchasers.DisplayPurchasers(lP);
+        }else if (controllerChoice.equals("listitems")){
+            ListItems.DisplayItems(lI);
+        }else if (controllerChoice.equals("removeitems")){
+            ListItems.DeleteItems(lI);
         }
         else {
             System.out.println("unknown command, please insert key valid \n");

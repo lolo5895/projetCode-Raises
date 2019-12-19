@@ -54,14 +54,22 @@ public class Restore {
         }
     }
 
-    public static void RestoreAuction(List<Auction> la) throws IOException {
+    public static List<Auction> RestoreAuction(List<Auction> la) throws IOException {
         try {
-            FileReader f = new FileReader("ListAuction.txt");
-            for (int i = 0; i < la.size(); i++) {
-                f.read();
+            BufferedReader reader = new BufferedReader(new FileReader("ListAuction.txt"));
+            String line;
+            while ((line = reader.readLine()) != null) {
+                //System.out.println(line);
+                String[]lt = line.split(";");
+                Auction a = new Auction(lt[0],lt[1],lt[2],lt[3],lt[4]);
+                la.add(a);
             }
+            reader.close();
+            return la;
         } catch (IOException e) {
+            System.err.format("Exception occurred trying to read '%s'.", "ListAuction.txt");
             e.printStackTrace();
+            return null;
         }
     }
 }

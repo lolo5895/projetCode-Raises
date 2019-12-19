@@ -35,8 +35,7 @@ public class Save {
             FileWriter fileWriter = new FileWriter("ListItems.txt");
             for (int i = 0;i<li.size();i++){
                 Items items = li.get(i);
-                fileWriter.write( "Name items: "+items.getNameItems()+" "+"Reference :"+items.getReference()+" "+"Category : "+items.getCategory()+" "+
-                        "Scarcity : "+items.getScarcity()+"%"+"\n");
+                fileWriter.write( items.getNameItems()+";"+items.getReference()+";"+items.getCategory()+";"+ items.getScarcity()+"%"+"\n");
             }
             fileWriter.close();
         }catch (IOException e){
@@ -48,8 +47,7 @@ public class Save {
             FileWriter fileWriter = new FileWriter("ListAuction.txt");
             for (int i = 0;i<la.size();i++){
                 Auction a = la.get(i);
-                fileWriter.write( "First name purchasers : "+a.getFirstNamePurchasers()+"Last name purchasers : "+a.getLastNamePurchasers()+
-                        "Reference items : "+a.getReferenceItems()+"Day auction : "+a.getDayAuction()+"The day of purchase"+a.getPayDayAuction()+"\n");
+                fileWriter.write( a.getFirstNamePurchasers()+";"+a.getLastNamePurchasers()+ ";"+a.getReferenceItems()+";"+a.getDayAuction()+";"+a.getPayDayAuction()+"\n");
             }
             fileWriter.close();
         }catch (IOException e){

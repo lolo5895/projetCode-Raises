@@ -72,6 +72,11 @@ return null;
         }
         return null;
     }
+
+    /**
+     *
+     * @param lp
+     */
     public static void DeletePurchasers(List<Purchasers> lp){
         System.out.println("Enter the fisrt name purchasers to delete:");
         Scanner f = new Scanner(System.in);
